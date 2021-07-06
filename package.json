@@ -1,0 +1,48 @@
+{
+  "name": "lorem-ipsum-generator",
+  "version": "1.0.0",
+  "description": "A JavaScript module that generates lorem ipsum filler text.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json",
+    "test": "jest --config jestconfig.json --passWithNoTests",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dillonschultz93/lorem-ipsum-generator.git"
+  },
+  "keywords": [
+    "lorem",
+    "ipsum",
+    "filler",
+    "text",
+    "generator",
+    "placeholder"
+  ],
+  "files": [
+    "lib/**/*"
+  ],
+  "author": "Dillon Schultz <dillonschultz93@gmail.com> (https://dillonschultz.design)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dillonschultz93/lorem-ipsum-generator/issues"
+  },
+  "homepage": "https://github.com/dillonschultz93/lorem-ipsum-generator#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "jest": "^27.0.6",
+    "prettier": "^2.3.2",
+    "ts-jest": "^27.0.3",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.3.5"
+  }
+}
