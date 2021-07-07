@@ -95,7 +95,7 @@ describe('Generator class', () => {
       const max = 20;
       generator = new Generator({ numberOfSentences: { min, max }});
 
-      const assertion = generator.createSentence().split('. ');
+      const assertion = generator.createParagraphs().split('. ');
 
       expect(assertion.length <= max);
       expect(assertion.length >= min);
