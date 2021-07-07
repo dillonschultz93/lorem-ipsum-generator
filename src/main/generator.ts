@@ -73,6 +73,14 @@ class Generator {
 
     return words.join(' ');
   }
+
+  /**
+   * @description Generates a random sentence sourced from random words.
+   * @param num Number of sentences.
+   */
+  public createSentence(num?: number): string {
+    return `${capitalize(this.createWords(num))}.`
+  }
 };
 
 export default Generator;
