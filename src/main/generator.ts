@@ -76,10 +76,26 @@ class Generator {
 
   /**
    * @description Generates a random sentence sourced from random words.
-   * @param num Number of sentences.
+   * @param num Number of words.
    */
   public createSentence(num?: number): string {
     return `${capitalize(this.createWords(num))}.`
+  }
+
+  /**
+   * @description Generates a random paragraph based on the amount of sentences desired.
+   * @param num Number of sentences.
+   */
+  public createParagraphs(num?: number): string {
+    const { min, max } = this.numberOfSentences;
+    let amountOfSentences = num || randomInt(min, max);
+    let sentences = [];
+
+    for (let i = amountOfSentences; i > 0; i--) {
+      sentences.push(this.createSentence());
+    }
+
+    return sentences.join(' ');
   }
 };
 

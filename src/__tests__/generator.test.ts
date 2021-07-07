@@ -71,12 +71,31 @@ describe('Generator class', () => {
       expect(assertion.split(' ')).toHaveLength(12);
     });
 
-    it('should create a sentence with the amount of words between the min and max range', () => {
+    it('should create a sentence with an amount of words between the min and max range', () => {
       const min = 8;
       const max = 16;
       generator = new Generator({ numberOfWords: { min, max }});
 
       const assertion = generator.createSentence().split(' ');
+
+      expect(assertion.length <= max);
+      expect(assertion.length >= min);
+    });
+  });
+
+  describe('createParagraphs() Method', () => {
+    it('should create a paragraph with a specific amount of sentences', () => {
+      const assertion = generator.createParagraphs(5);
+
+      expect(assertion.split('. ')).toHaveLength(5);
+    });
+
+    it('should create a paragraph with an amount of sentences between the min and max range', () => {
+      const min = 5;
+      const max = 20;
+      generator = new Generator({ numberOfSentences: { min, max }});
+
+      const assertion = generator.createSentence().split('. ');
 
       expect(assertion.length <= max);
       expect(assertion.length >= min);
