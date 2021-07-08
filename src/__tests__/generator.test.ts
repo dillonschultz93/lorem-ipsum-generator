@@ -1,4 +1,4 @@
-import Generator from '../main/generator';
+import Generator from '../base/generator';
 import { WORDS } from '../constants/words';
 
 describe('Generator class', () => {
@@ -9,21 +9,18 @@ describe('Generator class', () => {
   });
 
   it('should be instantiated with the default options', () => {
-    const arrayEquals = (a: any[], b: any[]) =>  {
-      return Array.isArray(a) &&
-        Array.isArray(b) &&
-        a.length === b.length &&
-        a.every((val, index) => val === b[index]);
-    }
+    const arrayEquals = (a: any[], b: any[]) => {
+      return Array.isArray(a) && Array.isArray(b) && a.length === b.length && a.every((val, index) => val === b[index]);
+    };
 
-    expect(generator.numberOfSentences).toEqual({ max: 7, min: 3});
-    expect(generator.numberOfWords).toEqual({max: 15, min: 5});
+    expect(generator.numberOfSentences).toEqual({ max: 7, min: 3 });
+    expect(generator.numberOfWords).toEqual({ max: 15, min: 5 });
     expect(arrayEquals(WORDS, generator.words)).toEqual(true);
   });
 
   it('should throw an error if the minimum number of sentences exceeds the maximum', () => {
     try {
-      generator = new Generator({ numberOfSentences: { max: 2, min: 8 }});
+      generator = new Generator({ numberOfSentences: { max: 2, min: 8 } });
     } catch (error) {
       expect(error).toBeDefined;
       expect(error.message).toEqual('Minimum number of sentences per paragraph (8) cannot exceed the maximum (2)');
@@ -32,7 +29,7 @@ describe('Generator class', () => {
 
   it('should throw an error if the minimum number of words exceeds the maximum', () => {
     try {
-      generator = new Generator({ numberOfWords: { max: 2, min: 8 }});
+      generator = new Generator({ numberOfWords: { max: 2, min: 8 } });
     } catch (error) {
       expect(error).toBeDefined;
       expect(error.message).toEqual('Minimum number of words per sentence (8) cannot exceed the maximum (2)');
@@ -55,7 +52,7 @@ describe('Generator class', () => {
     it('should create a random amount of words between the min and max range', () => {
       const min = 5;
       const max = 12;
-      generator = new Generator({ numberOfWords: { min, max }});
+      generator = new Generator({ numberOfWords: { min, max } });
 
       const assertion = generator.createWords();
 
@@ -74,7 +71,7 @@ describe('Generator class', () => {
     it('should create a sentence with an amount of words between the min and max range', () => {
       const min = 8;
       const max = 16;
-      generator = new Generator({ numberOfWords: { min, max }});
+      generator = new Generator({ numberOfWords: { min, max } });
 
       const assertion = generator.createSentence().split(' ');
 
@@ -93,7 +90,7 @@ describe('Generator class', () => {
     it('should create a paragraph with an amount of sentences between the min and max range', () => {
       const min = 5;
       const max = 20;
-      generator = new Generator({ numberOfSentences: { min, max }});
+      generator = new Generator({ numberOfSentences: { min, max } });
 
       const assertion = generator.createParagraphs().split('. ');
 

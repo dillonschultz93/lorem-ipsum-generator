@@ -1,14 +1,15 @@
-import { WORDS } from "../constants/words";
-import { capitalize, randomInt } from "../util";
+import { WORDS } from '../constants/words';
+import { capitalize, randomInt } from '../util';
 
-interface IRange {
+export interface IRange {
   min: number;
   max: number;
-};
+}
 
-interface IGeneratorOptions {
+export interface IGeneratorOptions {
   numberOfSentences?: IRange;
   numberOfWords?: IRange;
+  numberOfParagraphs?: IRange;
   random?: number;
   words?: string[];
 }
@@ -19,36 +20,44 @@ interface IGeneratorOptions {
 class Generator {
   public numberOfSentences: IRange;
   public numberOfWords: IRange;
+  public numberOfParagraphs: IRange;
   public random: number;
   public words: string[];
 
   constructor({
     numberOfSentences = { max: 7, min: 3 },
     numberOfWords = { max: 15, min: 5 },
+    numberOfParagraphs = { max: 10, min: 3},
     random,
-    words = WORDS
+    words = WORDS,
   }: IGeneratorOptions = {}) {
     // Check if minimum number of sentences exceeds maximum number.
     if (numberOfSentences.min > numberOfSentences.max) {
       throw new Error(
-        `Minimum number of sentences per paragraph (${
-          numberOfSentences.min
-      }) cannot exceed the maximum (${numberOfSentences.max})`);
+        `Minimum number of sentences per paragraph (${numberOfSentences.min}) cannot exceed the maximum (${numberOfSentences.max})`,
+      );
     }
 
     // Check if the minimum number of words exceeds maximum number.
     if (numberOfWords.min > numberOfWords.max) {
       throw new Error(
-        `Minimum number of words per sentence (${
-          numberOfWords.min
-      }) cannot exceed the maximum (${numberOfWords.max})`);
+        `Minimum number of words per sentence (${numberOfWords.min}) cannot exceed the maximum (${numberOfWords.max})`,
+      );
+    }
+
+    // Check if the minimum number of words exceeds maximum number.
+    if (numberOfParagraphs.min > numberOfParagraphs.max) {
+      throw new Error(
+        `Minimum number of paragraphs (${numberOfParagraphs.min}) cannot exceed the maximum (${numberOfParagraphs.max})`,
+      );
     }
 
     this.numberOfSentences = numberOfSentences;
     this.numberOfWords = numberOfWords;
+    this.numberOfParagraphs = numberOfParagraphs;
     this.random = random || Math.random();
     this.words = words;
-  };
+  }
 
   /**
    * @description Picks a random word from the word array.
@@ -59,7 +68,7 @@ class Generator {
   }
 
   /**
-   * @description Generates an array of random words based on the WORDS array.
+   * @description Generates a string of random words based on the WORDS array.
    * @param num Number of words.
    */
   public createWords(num?: number): string {
@@ -67,9 +76,9 @@ class Generator {
     let lengthOfWords = num || randomInt(min, max);
     let words = [];
 
-    for (let i = lengthOfWords; i > 0; i-- ) {
+    for (let i = lengthOfWords; i > 0; i--) {
       words.push(this.randomWord());
-    };
+    }
 
     return words.join(' ');
   }
@@ -79,7 +88,7 @@ class Generator {
    * @param num Number of words.
    */
   public createSentence(num?: number): string {
-    return `${capitalize(this.createWords(num))}.`
+    return `${capitalize(this.createWords(num))}.`;
   }
 
   /**
@@ -97,6 +106,6 @@ class Generator {
 
     return sentences.join(' ');
   }
-};
+}
 
 export default Generator;
