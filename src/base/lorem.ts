@@ -18,7 +18,7 @@ class LoremIpsum {
   }
 
   /**
-   * @description Generates sentences.
+   * @description Generates a sentence with a desired number of words.
    * @param num Number of words in the sentence.
    */
   public generateSentence(num?: number): string {
@@ -26,18 +26,11 @@ class LoremIpsum {
   }
 
   /**
-   * @description Generates an array of paragraphs.
+   * @description Generates a paragraph with the desired number of sentences.
    * @param num Number of paragraphs to be generated.
    */
-  public generateParagraphs(num?: number): string[] {
-    let amountOfParagraphs = num || randomInt(this.generator.numberOfParagraphs.max, this.generator.numberOfParagraphs.min);
-    let paragraphs = [];
-
-    for(let i = amountOfParagraphs; i > 0; i--) {
-      paragraphs.push(this.generator.createParagraphs());
-    }
-
-    return paragraphs;
+  public generateParagraph(num?: number): string {
+    return this.generator.createParagraphs(num);
   }
 }
 

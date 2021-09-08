@@ -95,16 +95,33 @@ class Generator {
    * @description Generates a random paragraph based on the amount of sentences desired.
    * @param num Number of sentences.
    */
-  public createParagraphs(num?: number): string {
+  public createSentences(num?: number): string {
     const { min, max } = this.numberOfSentences;
     let amountOfSentences = num || randomInt(min, max);
     let sentences = [];
 
     for (let i = amountOfSentences; i > 0; i--) {
-      sentences.push(this.createSentence());
+      i % 2 !== 0 ? sentences.push(' ') : sentences.push(this.createSentence());
     }
 
-    return sentences.join(' ');
+    return sentences.join('').trim();
+  }
+
+  /**
+   * @description Generates a paragraph with the desired number of sentences.
+   * @param num Number of paragraphs to be generated.
+   */
+   public createParagraphs(num?: number): string {
+    let amountOfParagraphs = num || randomInt(this.numberOfParagraphs.max, this.numberOfParagraphs.min);
+    let amountOfSentences = randomInt(this.numberOfSentences.max, this.numberOfSentences.min);
+    let paragraphs = [];
+
+    for(let i = amountOfParagraphs; i > 0; i--) {
+      paragraphs.push(this.createSentences(amountOfSentences));
+      paragraphs.push('\n');
+    }
+
+    return paragraphs.join('').trim();
   }
 }
 
