@@ -101,7 +101,7 @@ class Generator {
     let sentences = [];
 
     for (let i = amountOfSentences; i > 0; i--) {
-      i % 2 !== 0 ? sentences.push(' ') : sentences.push(this.createSentence());
+     sentences.push(`${this.createSentence()} `);
     }
 
     return sentences.join('').trim();
