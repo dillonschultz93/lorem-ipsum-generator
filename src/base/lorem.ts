@@ -21,15 +21,15 @@ class LoremIpsum {
    * @description Generates a sentence with a desired number of words.
    * @param num Number of words in the sentence.
    */
-  public generateSentence(num?: number): string {
-    return this.generator.createSentence(num);
+  public generateSentences(num?: number): string {
+    return this.generator.createSentences(num);
   }
 
   /**
    * @description Generates a paragraph with the desired number of sentences.
    * @param num Number of paragraphs to be generated.
    */
-  public generateParagraph(num?: number): string {
+  public generateParagraphs(num?: number): string {
     return this.generator.createParagraphs(num);
   }
 }
