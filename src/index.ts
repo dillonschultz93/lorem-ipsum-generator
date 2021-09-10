@@ -21,7 +21,7 @@ const loremIpsum = ({
   wordMaximum = 15,
   units = 'sentences',
   words = WORDS
-}: ILoremIpsum = {}): string | string[] => {
+}: ILoremIpsum = {}): string => {
   const options = {
     random,
     sentencesPerParagraph: {
@@ -38,14 +38,17 @@ const loremIpsum = ({
   const constructedLorem: LoremIpsum = new LoremIpsum(options);
   
   switch (units) {
+    // Create the number of paragraphs equal to the amount passed in the count argument.
     case 'paragraphs':
     case 'paragraph':
-      return constructedLorem.generateParagraph(count);
+      return constructedLorem.generateParagraphs(count);
 
+    // Create a paragraph with the amount of sentences equal to the amount passed in the count argument.
     case 'sentences':
       case 'sentence':
-        return constructedLorem.generateSentence(count);
+        return constructedLorem.generateSentences(count);
 
+    // Create a sentence with the amount of words equal to the amount passed in the count argument.
     case 'words':
       case 'word':
         return constructedLorem.generateWords(count);
@@ -54,7 +57,5 @@ const loremIpsum = ({
       return '';
   }
 };
-
-console.log(loremIpsum({ count: 5, units: 'paragraphs' }));
 
 export { loremIpsum, LoremIpsum }
