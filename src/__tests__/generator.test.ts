@@ -80,9 +80,9 @@ describe('Generator class', () => {
     });
   });
 
-  describe('createParagraphs() Method', () => {
+  describe('createSentences() Method', () => {
     it('should create a paragraph with a specific amount of sentences', () => {
-      const assertion = generator.createParagraphs(5);
+      const assertion = generator.createSentences(5);
 
       expect(assertion.split('. ')).toHaveLength(5);
     });
@@ -92,10 +92,39 @@ describe('Generator class', () => {
       const max = 20;
       generator = new Generator({ numberOfSentences: { min, max } });
 
-      const assertion = generator.createParagraphs().split('. ');
+      const assertion = generator.createSentences().split('. ');
 
       expect(assertion.length <= max);
       expect(assertion.length >= min);
+    });
+  });
+
+  describe('createParagraphs() Method', () => {
+    it('should create a specific amount of paragraphs', () => {
+      const assertion = generator.createParagraphs(3);
+
+      expect(assertion.split('\n')).toHaveLength(3);
+    });
+
+    it('should create a grouping of paragraphs between the min and max range', () => {
+      const paragraphMin = 3;
+      const paragraphMax = 7;
+      const sentenceMin = 5;
+      const sentenceMax = 12;
+      generator = new Generator({ 
+        numberOfParagraphs: { 
+          min: paragraphMin, max: paragraphMax 
+        }, 
+        numberOfSentences: { 
+          min: sentenceMin, 
+          max: sentenceMax 
+        } 
+      });
+
+      const assertion = generator.createParagraphs().split('\n');
+
+      expect(assertion.length <= paragraphMax);
+      expect(assertion.length >= paragraphMin);
     });
   });
 });

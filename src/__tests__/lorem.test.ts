@@ -29,7 +29,7 @@ describe('Lorem Ipsum class', () => {
     it('should generate a random sentence with a random amount of words', () => {
       const loremIpsum = new LoremIpsum();
   
-      const assertion = loremIpsum.generateSentence(3).split(" ");
+      const assertion = loremIpsum.generateSentences(3).split(". ");
   
       expect(assertion).toHaveLength(3);
     });
@@ -41,7 +41,7 @@ describe('Lorem Ipsum class', () => {
         numberOfWords: { min, max }
       });
   
-      const assertion = loremIpsum.generateSentence().split(" ");
+      const assertion = loremIpsum.generateSentences().split(". ");
   
       expect(assertion.length <= max).toBe(true);
       expect(assertion.length >= min).toBe(true);
@@ -54,7 +54,7 @@ describe('Lorem Ipsum class', () => {
   
       const assertion = loremIpsum.generateParagraphs(5);
   
-      expect(assertion).toHaveLength(5);
+      expect(assertion.split('\n')).toHaveLength(5);
     });
 
     it('should generate a random amount of paragraphs', () => {
@@ -66,8 +66,8 @@ describe('Lorem Ipsum class', () => {
 
       const assertion = loremIpsum.generateParagraphs()
 
-      expect(assertion.length <= max).toBe(true);
-      expect(assertion.length >= min).toBe(true);
+      expect(assertion.split('\n').length <= max).toBe(true);
+      expect(assertion.split('\n').length >= min).toBe(true);
     });
   });
 });
