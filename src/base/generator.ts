@@ -73,8 +73,8 @@ class Generator {
    */
   public createWords(num?: number): string {
     const { min, max } = this.numberOfWords;
-    let lengthOfWords = num || randomInt(min, max);
-    let words = [];
+    const lengthOfWords = num || randomInt(min, max);
+    const words = [];
 
     for (let i = lengthOfWords; i > 0; i--) {
       words.push(this.randomWord());
@@ -97,8 +97,8 @@ class Generator {
    */
   public createSentences(num?: number): string {
     const { min, max } = this.numberOfSentences;
-    let amountOfSentences = num || randomInt(min, max);
-    let sentences = [];
+    const amountOfSentences = num || randomInt(min, max);
+    const sentences = [];
 
     for (let i = amountOfSentences; i > 0; i--) {
      sentences.push(`${this.createSentence()} `);
@@ -112,9 +112,9 @@ class Generator {
    * @param num Number of paragraphs to be generated.
    */
    public createParagraphs(num?: number): string {
-    let amountOfParagraphs = num || randomInt(this.numberOfParagraphs.max, this.numberOfParagraphs.min);
-    let amountOfSentences = randomInt(this.numberOfSentences.max, this.numberOfSentences.min);
-    let paragraphs = [];
+    const amountOfParagraphs = num || randomInt(this.numberOfParagraphs.max, this.numberOfParagraphs.min);
+    const amountOfSentences = randomInt(this.numberOfSentences.max, this.numberOfSentences.min);
+    const paragraphs = [];
 
     for(let i = amountOfParagraphs; i > 0; i--) {
       paragraphs.push(this.createSentences(amountOfSentences));

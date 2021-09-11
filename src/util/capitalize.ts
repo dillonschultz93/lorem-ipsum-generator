@@ -3,10 +3,10 @@
  * @param string The string to be capitalized.
  * @returns A capitalized string.
  */
-const capitalize = (string: string) => {
-  const cleanedString = string.trim();
+const capitalize = (str: string) => {
+  const trimmedString = str.trim();
 
-  return cleanedString.charAt(0).toUpperCase() + cleanedString.slice(1);
+  return trimmedString.charAt(0).toUpperCase() + trimmedString.slice(1);
 };
 
 export default capitalize;
