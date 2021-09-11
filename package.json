@@ -9,6 +9,8 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "test": "jest --config jestconfig.json --passWithNoTests",
+    "test:watch": "jest --config jestconfig.json --watch",
+    "coverage": "jest --config jestconfig.json --coverage",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
