@@ -1,4 +1,3 @@
-import { randomInt } from '../util';
 import Generator, { IGeneratorOptions } from './generator';
 
 class LoremIpsum {
