@@ -1,5 +1,5 @@
 {
-  "name": "lorem-ipsum-generator",
+  "name": "lorem-ipsum-filler",
   "version": "1.0.0",
   "description": "A JavaScript module that generates lorem ipsum filler text.",
   "main": "lib/index.js",

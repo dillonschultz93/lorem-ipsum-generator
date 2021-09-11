@@ -3,17 +3,17 @@
 
 ## Installation
 ```
-npm i lorem-ipsum-generator
+npm i lorem-ipsum-filler
 ```
 
 ## Usage
-There are two ways to use `lorem-ipsum-generator`:
+There are two ways to use `lorem-ipsum-filler`:
 
 ### Class
 The Class exposes three simple methods to generate filler text.
 
 ```
-import { LoremIpsum } from 'lorem-ipsum-generator';
+import { LoremIpsum } from 'lorem-ipsum-filler';
 
 const lorem = new LoremIpsum({
   numberOfSentences: {
@@ -34,7 +34,7 @@ lorem.generateParagraphs(4); // generates 4 paragraphs
 ### Function
 The function takes an object with options passed as it's argument to generate filler text.
 ```
-import { loremIpsum } from 'lorem-ipsum-generator';
+import { loremIpsum } from 'lorem-ipsum-filler';
 
 const words = loremIpsum({ count: 12, units: 'words' }); // generates 12 words
 const sentences = loremIpsum({ count: 8, units: 'sentences' }); // generates 8 sentences
