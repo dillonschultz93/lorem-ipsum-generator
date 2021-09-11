@@ -1,4 +1,4 @@
-# lorem-ipsum-generator
+# lorem-ipsum-filler
 ### A JavaScript module that generates lorem ipsum filler text.
 
 ## Installation
