@@ -24,12 +24,12 @@ const loremIpsum = ({
 }: ILoremIpsum = {}): string => {
   const options = {
     random,
-    sentencesPerParagraph: {
+    numberOfSentences: {
       max: sentenceMaximum,
       min: sentenceMinimum
     },
     words,
-    wordsPerSentence: {
+    numberOfWords: {
       max: wordMaximum,
       min: wordMinimum
     },
@@ -45,16 +45,14 @@ const loremIpsum = ({
 
     // Create a paragraph with the amount of sentences equal to the amount passed in the count argument.
     case 'sentences':
-      case 'sentence':
-        return constructedLorem.generateSentences(count);
+    case 'sentence':
+    default:
+      return constructedLorem.generateSentences(count);
 
     // Create a sentence with the amount of words equal to the amount passed in the count argument.
     case 'words':
-      case 'word':
-        return constructedLorem.generateWords(count);
-
-    default:
-      return '';
+    case 'word':
+      return constructedLorem.generateWords(count);
   }
 };
 
