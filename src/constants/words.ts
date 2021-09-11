@@ -37,7 +37,7 @@ export const WORDS = [
   'labore',
   'laboris',
   'laborum',
-  'Lorem',
+  'lorem',
   'magna',
   'minim',
   'mollit',
