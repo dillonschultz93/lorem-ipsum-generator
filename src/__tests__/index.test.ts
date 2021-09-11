@@ -31,6 +31,24 @@ describe('loremIpsum', () => {
     const assertionTwo = loremIpsum({ count, units: 'sentences' });
 
     expect(assertionOne.split('. ')).toHaveLength(count);
-      expect(assertionTwo.split('. ')).toHaveLength(count);
+    expect(assertionTwo.split('. ')).toHaveLength(count);
+  });
+
+  it('should adjust the minimum and maximum word count per sentence', () => {
+    const min = 2;
+    const max = 6;
+    const assertion = loremIpsum({ wordMinimum: min, wordMaximum: max}).split(' ');
+
+    expect(assertion.length <= max).toBe(true);
+    expect(assertion.length >= min).toBe(true);
+  });
+
+  it('should adjust the minimum and maximum sentence count per paragraph', () => {
+    const min = 3;
+    const max = 8;
+    const assertion = loremIpsum({ sentenceMinimum: min, sentenceMaximum: max, units: 'paragraph'}).split('. ');
+
+    expect(assertion.length <= max).toBe(true);
+    expect(assertion.length >= min).toBe(true);
   });
 });
